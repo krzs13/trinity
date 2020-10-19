@@ -25,6 +25,15 @@ class NDArray {
     copy(data.begin(), data.end(), data_);
   }
 
+  NDArray(size_t n_dimensions, size_t* shape, size_t size, DType* data)
+      : n_dimensions_{n_dimensions}, size_{size} {
+    shape_ = new size_t[n_dimensions_];
+    copy(shape, shape + n_dimensions_, shape_);
+
+    data_ = new DType[size_];
+    copy(data, data + size_, data_);
+  }
+
   NDArray(const NDArray& ndarray_copy) {
     n_dimensions_ = ndarray_copy.n_dimensions_;
     shape_ = new size_t[n_dimensions_];
