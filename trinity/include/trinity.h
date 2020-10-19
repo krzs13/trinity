@@ -8,3 +8,4 @@
 #include "math_operations/subtract.h"
 #include "math_operations/sum.h"
 #include "ndarray/matrix.h"
+#include "ndarray/ndarray.h"
