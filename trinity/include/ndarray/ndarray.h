@@ -112,7 +112,7 @@ class NDArray {
 
   size_t index_math_(size_t* indices, size_t size, size_t n) {
     size_t index{n_dimensions_ - n};
-    size_t current_size{size / shape_[0]};
+    size_t current_size{size / shape_[index]};
 
     if (current_size > 1) {
       return indices[index] * current_size +
