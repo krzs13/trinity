@@ -2,12 +2,6 @@
 #ifndef TRINITY_MATRIX_H
 #define TRINITY_MATRIX_H
 
-// #include "../math_operations/add.h"
-// #include "../math_operations/divide.h"
-// #include "../math_operations/dot.h"
-// #include "../math_operations/multiply.h"
-// #include "../math_operations/subtract.h"
-// #include "../math_operations/sum.h"
 #include "../ndarray/ndarray.h"
 
 using std::copy;
@@ -46,9 +40,17 @@ class Matrix : public NDArray<DType, NShape...> {
     return add(matrix_1, matrix_2);
   }
 
+  void operator+=(Matrix<DType, NShape...> matrix_add) {
+    *this = add(*this, matrix_add);
+  }
+
   friend Matrix operator-(Matrix<DType, NShape...> matrix_1,
                           Matrix<DType, NShape...> matrix_2) {
     return subtract(matrix_1, matrix_2);
+  }
+
+  void operator-=(Matrix<DType, NShape...> matrix_add) {
+    *this = subtract(*this, matrix_add);
   }
 
   friend Matrix operator*(Matrix<DType, NShape...> matrix_1,
@@ -56,9 +58,17 @@ class Matrix : public NDArray<DType, NShape...> {
     return multiply(matrix_1, matrix_2);
   }
 
+  void operator*=(Matrix<DType, NShape...> matrix_add) {
+    *this = multiply(*this, matrix_add);
+  }
+
   friend Matrix operator/(Matrix<DType, NShape...> matrix_1,
                           Matrix<DType, NShape...> matrix_2) {
     return divide(matrix_1, matrix_2);
+  }
+
+  void operator/=(Matrix<DType, NShape...> matrix_add) {
+    *this = divide(*this, matrix_add);
   }
 };
 

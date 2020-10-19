@@ -28,13 +28,14 @@ void print_data(DataType* data, size_t size) {
 
 int main(int, char**) {
   Matrix<int, 5> tensor_1{1, 2, 3};
-  Matrix<int, 5> tensor_2{1, 2, 3, 4, 5};
+  Matrix<int, 5> tensor_2{10, 20, 30, 40, 50};
   Matrix<int, 5> tensor_3{1, 2, 3, 4, 5};
   Matrix<int, 5> tensor_4{};
   // tensor_4 = add(tensor_2, tensor_3);
   tensor_4 = tensor_2 + tensor_3;
+  tensor_4 *= tensor_2;
 
-  cout << sum(tensor_2) << '\n';
+  // cout << sum(tensor_2) << '\n';
 
   print_data(tensor_4.data(), tensor_4.size());
 }
