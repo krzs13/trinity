@@ -17,20 +17,20 @@ class Matrix : public NDArray<DType, NShape...> {
   Matrix(size_t n_dimensions, size_t* shape, size_t size, DType* data)
       : NDArray<DType, NShape...>(n_dimensions, shape, size, data) {}
 
-  Matrix(const Matrix& matrix_copy) : NDArray<DType, NShape...>(matrix_copy) {}
+  Matrix(const Matrix& matrix_other) : NDArray<DType, NShape...>(matrix_other) {}
 
-  Matrix(Matrix&& matrix_move) : NDArray<DType, NShape...>(matrix_move) {}
+  Matrix(Matrix&& matrix_other) : NDArray<DType, NShape...>(matrix_other) {}
 
   ~Matrix() {}
 
-  Matrix& operator=(const Matrix& matrix_copy) {
-    NDArray<DType, NShape...>::operator=(matrix_copy);
+  Matrix& operator=(const Matrix& matrix_other) {
+    NDArray<DType, NShape...>::operator=(matrix_other);
 
     return *this;
   }
 
-  Matrix& operator=(Matrix&& matrix_move) {
-    NDArray<DType, NShape...>::operator=(matrix_move);
+  Matrix& operator=(Matrix&& matrix_other) {
+    NDArray<DType, NShape...>::operator=(matrix_other);
 
     return *this;
   }
@@ -40,8 +40,8 @@ class Matrix : public NDArray<DType, NShape...> {
     return add(matrix_1, matrix_2);
   }
 
-  void operator+=(Matrix<DType, NShape...> matrix_add) {
-    *this = add(*this, matrix_add);
+  void operator+=(Matrix<DType, NShape...> matrix_other) {
+    *this = add(*this, matrix_other);
   }
 
   friend Matrix operator-(Matrix<DType, NShape...> matrix_1,
@@ -49,8 +49,8 @@ class Matrix : public NDArray<DType, NShape...> {
     return subtract(matrix_1, matrix_2);
   }
 
-  void operator-=(Matrix<DType, NShape...> matrix_add) {
-    *this = subtract(*this, matrix_add);
+  void operator-=(Matrix<DType, NShape...> matrix_other) {
+    *this = subtract(*this, matrix_other);
   }
 
   friend Matrix operator*(Matrix<DType, NShape...> matrix_1,
@@ -58,8 +58,8 @@ class Matrix : public NDArray<DType, NShape...> {
     return multiply(matrix_1, matrix_2);
   }
 
-  void operator*=(Matrix<DType, NShape...> matrix_add) {
-    *this = multiply(*this, matrix_add);
+  void operator*=(Matrix<DType, NShape...> matrix_other) {
+    *this = multiply(*this, matrix_other);
   }
 
   friend Matrix operator/(Matrix<DType, NShape...> matrix_1,
@@ -67,8 +67,8 @@ class Matrix : public NDArray<DType, NShape...> {
     return divide(matrix_1, matrix_2);
   }
 
-  void operator/=(Matrix<DType, NShape...> matrix_add) {
-    *this = divide(*this, matrix_add);
+  void operator/=(Matrix<DType, NShape...> matrix_other) {
+    *this = divide(*this, matrix_other);
   }
 };
 

@@ -34,55 +34,55 @@ class NDArray {
     copy(data, data + size_, data_);
   }
 
-  NDArray(const NDArray& ndarray_copy) {
-    n_dimensions_ = ndarray_copy.n_dimensions_;
+  NDArray(const NDArray& ndarray_other) {
+    n_dimensions_ = ndarray_other.n_dimensions_;
     shape_ = new size_t[n_dimensions_];
-    copy(ndarray_copy.shape_, ndarray_copy.shape_ + n_dimensions_, shape_);
+    copy(ndarray_other.shape_, ndarray_other.shape_ + n_dimensions_, shape_);
 
-    size_ = ndarray_copy.size_;
-    data_ = new DType[ndarray_copy.size_];
-    copy(ndarray_copy.data_, ndarray_copy.data_ + size_, data_);
+    size_ = ndarray_other.size_;
+    data_ = new DType[ndarray_other.size_];
+    copy(ndarray_other.data_, ndarray_other.data_ + size_, data_);
   }
 
-  NDArray(NDArray&& ndarray_move) {
-    n_dimensions_ = ndarray_move.n_dimensions_;
-    shape_ = ndarray_move.shape_;
-    size_ = ndarray_move.size_;
-    data_ = ndarray_move.data_;
+  NDArray(NDArray&& ndarray_other) {
+    n_dimensions_ = ndarray_other.n_dimensions_;
+    shape_ = ndarray_other.shape_;
+    size_ = ndarray_other.size_;
+    data_ = ndarray_other.data_;
 
-    ndarray_move.n_dimensions_ = 0;
-    ndarray_move.shape_ = nullptr;
-    ndarray_move.size_ = 0;
-    ndarray_move.data_ = nullptr;
+    ndarray_other.n_dimensions_ = 0;
+    ndarray_other.shape_ = nullptr;
+    ndarray_other.size_ = 0;
+    ndarray_other.data_ = nullptr;
   }
 
-  NDArray& operator=(const NDArray& ndarray_copy) {
-    n_dimensions_ = ndarray_copy.n_dimensions_;
+  NDArray& operator=(const NDArray& ndarray_other) {
+    n_dimensions_ = ndarray_other.n_dimensions_;
     delete[] shape_;
     shape_ = new size_t[n_dimensions_];
-    copy(ndarray_copy.shape_, ndarray_copy.shape_ + n_dimensions_, shape_);
+    copy(ndarray_other.shape_, ndarray_other.shape_ + n_dimensions_, shape_);
 
-    size_ = ndarray_copy.size_;
+    size_ = ndarray_other.size_;
     delete[] data_;
     data_ = new DType[size_];
-    copy(ndarray_copy.data_, ndarray_copy.data_ + size_, data_);
+    copy(ndarray_other.data_, ndarray_other.data_ + size_, data_);
 
     return *this;
   }
 
-  NDArray& operator=(NDArray&& ndarray_move) {
-    n_dimensions_ = ndarray_move.n_dimensions_;
+  NDArray& operator=(NDArray&& ndarray_other) {
+    n_dimensions_ = ndarray_other.n_dimensions_;
     delete[] shape_;
-    shape_ = ndarray_move.shape_;
+    shape_ = ndarray_other.shape_;
 
-    size_ = ndarray_move.size_;
+    size_ = ndarray_other.size_;
     delete[] data_;
-    data_ = ndarray_move.data_;
+    data_ = ndarray_other.data_;
 
-    ndarray_move.n_dimensions_ = 0;
-    ndarray_move.shape_ = nullptr;
-    ndarray_move.size_ = 0;
-    ndarray_move.data_ = nullptr;
+    ndarray_other.n_dimensions_ = 0;
+    ndarray_other.shape_ = nullptr;
+    ndarray_other.size_ = 0;
+    ndarray_other.data_ = nullptr;
 
     return *this;
   }
