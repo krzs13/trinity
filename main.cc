@@ -27,12 +27,12 @@ void print_data(DataType* data, size_t size) {
 }
 
 int main(int, char**) {
-  Matrix<int, 5> tensor_1{1, 2, 3};
-  Matrix<int, 5> tensor_2{10, 20, 30, 40, 50};
-  Matrix<int, 5> tensor_3{1, 2, 3, 4, 5};
-  Matrix<int, 5> tensor_4{};
+  Matrix<double, 5> tensor_1{1.0, 2.8, 3.7898};
+  Matrix<double, 5> tensor_2{10.25, 20.2126749856, 30.221, 40.0, 50.8756};
+  Matrix<double, 5> tensor_3{1.258, 2.787, 3.2, 4.8, 5.6};
+  Matrix<double, 5> tensor_4{};
   // tensor_4 = add(tensor_2, tensor_3);
-  tensor_4 = tensor_2 + 1000;
+  tensor_4 = ((tensor_2 + 1000 + tensor_1) * tensor_3) / 200;
   // tensor_4 *= tensor_2;
 
   // cout << sum(tensor_2) << '\n';

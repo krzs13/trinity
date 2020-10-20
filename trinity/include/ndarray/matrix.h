@@ -36,61 +36,65 @@ class Matrix : public NDArray<DType, NShape...> {
     return *this;
   }
 
-  friend Matrix operator+(Matrix<DType, NShape...> matrix_1,
-                          Matrix<DType, NShape...> matrix_2) {
+  friend Matrix operator+(const Matrix<DType, NShape...>& matrix_1,
+                          const Matrix<DType, NShape...>& matrix_2) {
     return add(matrix_1, matrix_2);
   }
 
-  friend Matrix operator+(Matrix<DType, NShape...> matrix_input, DType scalar) {
+  friend Matrix operator+(const Matrix<DType, NShape...>& matrix_input,
+                          DType scalar) {
     return add(matrix_input, scalar);
   }
 
-  void operator+=(Matrix<DType, NShape...> matrix_other) {
+  void operator+=(const Matrix<DType, NShape...>& matrix_other) {
     *this = add(*this, matrix_other);
   }
 
   void operator+=(DType scalar) { *this = add(*this, scalar); }
 
-  friend Matrix operator-(Matrix<DType, NShape...> matrix_1,
-                          Matrix<DType, NShape...> matrix_2) {
+  friend Matrix operator-(const Matrix<DType, NShape...>& matrix_1,
+                          const Matrix<DType, NShape...>& matrix_2) {
     return subtract(matrix_1, matrix_2);
   }
 
-  friend Matrix operator-(Matrix<DType, NShape...> matrix_input, DType scalar) {
+  friend Matrix operator-(const Matrix<DType, NShape...>& matrix_input,
+                          DType scalar) {
     return subtract(matrix_input, scalar);
   }
 
-  void operator-=(Matrix<DType, NShape...> matrix_other) {
+  void operator-=(const Matrix<DType, NShape...>& matrix_other) {
     *this = subtract(*this, matrix_other);
   }
 
   void operator-=(DType scalar) { *this = subtract(*this, scalar); }
 
-  friend Matrix operator*(Matrix<DType, NShape...> matrix_1,
-                          Matrix<DType, NShape...> matrix_2) {
+  friend Matrix operator*(const Matrix<DType, NShape...>& matrix_1,
+                          const Matrix<DType, NShape...>& matrix_2) {
     return multiply(matrix_1, matrix_2);
   }
 
-  friend Matrix operator*(Matrix<DType, NShape...> matrix_input, DType scalar) {
+  friend Matrix operator*(const Matrix<DType, NShape...>& matrix_input,
+                          DType scalar) {
     return multiply(matrix_input, scalar);
   }
 
-  void operator*=(Matrix<DType, NShape...> matrix_other) {
+  void operator*=(const Matrix<DType, NShape...>& matrix_other) {
     *this = multiply(*this, matrix_other);
   }
 
   void operator*=(DType scalar) { *this = multiply(*this, scalar); }
 
-  friend Matrix operator/(Matrix<DType, NShape...> matrix_1,
-                          Matrix<DType, NShape...> matrix_2) {
+  friend Matrix operator/(const Matrix<DType, NShape...>& matrix_1,
+                          const Matrix<DType, NShape...>& matrix_2) {
     return divide(matrix_1, matrix_2);
   }
 
-  friend Matrix operator/(Matrix<DType, NShape...> matrix_input, DType scalar) {
+  friend Matrix operator/(const Matrix<DType, NShape...>& matrix_input,
+                          DType scalar) {
     return divide(matrix_input, scalar);
   }
 
-  void operator/=(Matrix<DType, NShape...> matrix_other) {
+  void operator/=(const Matrix<DType, NShape...>& matrix_other) {
     *this = divide(*this, matrix_other);
   }
 
