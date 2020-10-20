@@ -30,8 +30,8 @@ class NDArray {
     shape_ = new size_t[n_dimensions_];
     copy(shape, shape + n_dimensions_, shape_);
 
-    data_ = new DType[size_];
-    copy(data, data + size_, data_);
+    data_ = data;
+    data = nullptr;
   }
 
   NDArray(const NDArray& ndarray_other) {

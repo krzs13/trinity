@@ -32,8 +32,8 @@ int main(int, char**) {
   Matrix<int, 5> tensor_3{1, 2, 3, 4, 5};
   Matrix<int, 5> tensor_4{};
   // tensor_4 = add(tensor_2, tensor_3);
-  tensor_4 = tensor_2 + tensor_3;
-  tensor_4 *= tensor_2;
+  tensor_4 = tensor_2 + 1000;
+  // tensor_4 *= tensor_2;
 
   // cout << sum(tensor_2) << '\n';
 
