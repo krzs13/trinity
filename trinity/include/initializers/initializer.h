@@ -11,6 +11,8 @@ using std::random_device;
 using std::uniform_int_distribution;
 using std::uniform_real_distribution;
 
+namespace trinity {
+namespace internal {
 template <typename DType, size_t NDimensions>
 Matrix<DType, NDimensions> initializer(
     const Matrix<DType, NDimensions>& matrix_input, DType initial_value) {
@@ -79,5 +81,7 @@ Matrix<double, NDimensions> random_initializer(
 
   return output;
 }
+}  // namespace internal
+}  // namespace trinity
 
 #endif  // TRINITY_INITIALIZER_H

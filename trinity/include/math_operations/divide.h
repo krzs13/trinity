@@ -4,6 +4,7 @@
 
 #include "../ndarray/matrix.h"
 
+namespace trinity {
 template <typename DType, size_t NDimensions>
 Matrix<DType, NDimensions> divide(const Matrix<DType, NDimensions>& matrix_1,
                                   const Matrix<DType, NDimensions>& matrix_2) {
@@ -36,5 +37,6 @@ Matrix<DType, NDimensions> divide(
 
   return output;
 }
+}  // namespace trinity
 
 #endif  // TRINITY_DIVIDE_H

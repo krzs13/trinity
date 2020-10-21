@@ -4,6 +4,7 @@
 
 #include "../ndarray/matrix.h"
 
+namespace trinity {
 template <typename DType, size_t NDimensions>
 Matrix<DType, NDimensions> transpose(
     const Matrix<DType, NDimensions>& matrix_input) {
@@ -27,5 +28,6 @@ Matrix<DType, NDimensions> transpose(
 
   return output;
 }
+}  // namespace trinity
 
 #endif  // TRINITY_TRANSPOSE_H

@@ -4,6 +4,7 @@
 
 #include "../ndarray/matrix.h"
 
+namespace trinity {
 template <typename DType, size_t NDimensions>
 size_t sum(const Matrix<DType, NDimensions>& matrix_input) {
   size_t result{};
@@ -14,5 +15,6 @@ size_t sum(const Matrix<DType, NDimensions>& matrix_input) {
 
   return result;
 }
+}  // namespace trinity
 
 #endif  // TRINITY_SUM_H

@@ -4,6 +4,7 @@
 
 #include "../ndarray/matrix.h"
 
+namespace trinity {
 template <typename DType, size_t NDimensions>
 Matrix<DType, NDimensions> multiply(
     const Matrix<DType, NDimensions>& matrix_1,
@@ -37,5 +38,6 @@ Matrix<DType, NDimensions> multiply(
 
   return output;
 }
+}  // namespace trinity
 
 #endif  // TRINITY_MULTIPLY_H

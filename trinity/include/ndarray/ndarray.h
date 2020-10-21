@@ -7,6 +7,8 @@
 using std::copy;
 using std::initializer_list;
 
+namespace trinity {
+namespace internal {
 template <typename DType, size_t NDimensions>
 class NDArray {
   static_assert(NDimensions > 0,
@@ -174,5 +176,7 @@ class NDArray {
     return indices[index];
   }
 };
+}  // namespace internal
+}  // namespace trinity
 
 #endif  // TRINITY_NDARRAY_H

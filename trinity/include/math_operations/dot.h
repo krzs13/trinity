@@ -4,6 +4,7 @@
 
 #include "../ndarray/matrix.h"
 
+namespace trinity {
 template <typename DType, size_t NDimensions>
 Matrix<DType, NDimensions> dot(const Matrix<DType, NDimensions>& matrix_1,
                                const Matrix<DType, NDimensions>& matrix_2) {
@@ -37,5 +38,6 @@ Matrix<DType, NDimensions> dot(const Matrix<DType, NDimensions>& matrix_1,
 
   return output;
 }
+}  // namespace trinity
 
 #endif  // TRINITY_DOT_H

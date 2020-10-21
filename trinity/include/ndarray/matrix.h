@@ -7,6 +7,7 @@
 using std::copy;
 using std::initializer_list;
 
+namespace trinity {
 template <typename DType, size_t NDimensions>
 class Matrix : public NDArray<DType, NDimensions> {
  public:
@@ -111,5 +112,6 @@ class Matrix : public NDArray<DType, NDimensions> {
 
   Matrix T() { return transpose(*this); }
 };
+}  // namespace trinity
 
 #endif  // TRINITY_MATRIX_H

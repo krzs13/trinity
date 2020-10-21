@@ -4,6 +4,7 @@
 
 #include "../ndarray/matrix.h"
 
+namespace trinity {
 template <typename DType, size_t NDimensions>
 Matrix<DType, NDimensions> subtract(
     const Matrix<DType, NDimensions>& matrix_1,
@@ -37,5 +38,6 @@ Matrix<DType, NDimensions> subtract(
 
   return output;
 }
+}  // namespace trinity
 
 #endif  // TRINITY_SUBTRACT_H
