@@ -2,27 +2,27 @@
 #ifndef TRINITY_NDARRAY_H
 #define TRINITY_NDARRAY_H
 
+#include <assert.h>
+
 using std::copy;
 using std::initializer_list;
 
-template <typename DType, size_t... NShape>
+template <typename DType, size_t NDimensions>
 class NDArray {
-  static_assert(sizeof...(NShape) > 0,
+  static_assert(NDimensions > 0,
                 "At least one dimension needs to be declared.");
 
  public:
   NDArray()
-      : n_dimensions_{sizeof...(NShape)},
-        shape_{new size_t[n_dimensions_]{NShape...}},
-        size_{calculate_size_()},
-        data_{nullptr} {}
+      : n_dimensions_{NDimensions}, shape_{nullptr}, size_{}, data_{nullptr} {}
 
-  NDArray(initializer_list<DType> data)
-      : n_dimensions_{sizeof...(NShape)},
-        shape_{new size_t[n_dimensions_]{NShape...}},
-        size_{calculate_size_()},
-        data_{new DType[size_]} {
-    copy(data.begin(), data.end(), data_);
+  NDArray(initializer_list<size_t> shape)
+      : n_dimensions_{NDimensions},
+        shape_{new size_t[NDimensions]},
+        size_{},
+        data_{nullptr} {
+    copy(shape.begin(), shape.end(), shape_);
+    size_ = calculate_size_();
   }
 
   NDArray(size_t n_dimensions, size_t* shape, size_t size, DType* data)
@@ -99,6 +99,23 @@ class NDArray {
   size_t size() const { return size_; }
 
   DType* data() const { return data_; }
+
+  void insert(initializer_list<DType> data) {
+    assert((data.size() <= size_) && "Data contains too many elements.");
+
+    data_ = new DType[size_];
+    copy(data.begin(), data.end(), data_);
+  }
+
+  bool compare_shape(const NDArray<DType, NDimensions>& ndarray_other) const {
+    for (size_t i = 0; i < n_dimensions_; i++) {
+      if (shape_[i] != ndarray_other.shape_[i]) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 
  protected:
   size_t n_dimensions_;
