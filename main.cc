@@ -29,29 +29,22 @@ void print_data(DataType* data, size_t size) {
 }
 
 int main(int, char**) {
-  // Matrix<double, 5> tensor_1{1.0, 2.8, 3.7898};
-  // Matrix<double, 5> tensor_2{10.25, 20.2126749856, 30.221, 40.0, 50.8756};
-  // Matrix<double, 5> tensor_3{1.258, 2.787, 3.2, 4.8, 5.6};
-  // Matrix<double, 5> tensor_4{};
-  // // tensor_4 = add(tensor_2, tensor_3);
-  // tensor_4 = ((tensor_2 + 1000 + tensor_1) * tensor_3) / 200;
-  // // tensor_4 *= tensor_2;
+  Matrix<int, 2> tensor_1{2, 3};
+  Matrix<int, 2> tensor_2{3, 2};
+  Matrix<int, 2> tensor_3{2, 3};
+  Matrix<int, 2> tensor_4{3, 4};
+  Matrix<int, 2> tensor_5{};
+  Matrix<int, 2> tensor_6{};
 
-  // // cout << sum(tensor_2) << '\n';
 
-  // print_data(tensor_4.data(), tensor_4.size());
-  // array<size_t, > x[1]{};
-  Matrix<int, 2> tensor_1{2, 2};
-  Matrix<int, 2> tensor_2{2, 2};
+  tensor_1.insert({1, 2, 3, 4, 5, 6});
+  tensor_2.insert({10, 11, 20, 21, 30, 31});
+  tensor_3.insert({2, 1, 4, 0, 1, 1});
+  tensor_4.insert({6, 3, -1, 0, 1, 1, 0, 4, -2, 5, 0, 2});
 
-  // cout << tensor_1.size() << '\n';
-  tensor_1.insert({1, 2, 3, 4});
-  tensor_2.insert({1, 2, 3, 4});
+  tensor_5 = dot(tensor_1, tensor_2);
+  print_data(tensor_5.data(), tensor_5.size());
 
-  tensor_1 += tensor_2 * 2;
-  print_data(tensor_1.data(), tensor_1.size());
-  size_t idx[2]{1, 1};
-  cout << tensor_1.find(idx) << '\n';
-
-  // cout << tensor_1.compare_shape(tensor_2) << '\n';
+  tensor_6 = dot(tensor_3, tensor_4);
+  print_data(tensor_6.data(), tensor_6.size());
 }

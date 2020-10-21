@@ -31,7 +31,6 @@ class NDArray {
     copy(shape, shape + n_dimensions_, shape_);
 
     data_ = data;
-    data = nullptr;
   }
 
   NDArray(const NDArray& ndarray_other) {
@@ -118,7 +117,7 @@ class NDArray {
   }
 
   DType find(initializer_list<size_t> indices) const {
-    assert(indices.size() == n_dimensions_);
+    assert((indices.size() == n_dimensions_) && "Wrong number of indices.");
 
     size_t indices_array[n_dimensions_];
     copy(indices.begin(), indices.end(), indices_array);
@@ -129,11 +128,16 @@ class NDArray {
     return data_[index];
   }
 
-  DType find(size_t* indicies) const {
-    size_t index{index_math_(indicies, size_, n_dimensions_)};
+  size_t calculate_index(initializer_list<size_t> indices) const {
+    assert((indices.size() == n_dimensions_) && "Wrong number of indices.");
+
+    size_t indices_array[n_dimensions_];
+    copy(indices.begin(), indices.end(), indices_array);
+
+    size_t index{index_math_(indices_array, size_, n_dimensions_)};
     assert((index < size_) && "Index out of range.");
 
-    return data_[index];
+    return index;
   }
 
  protected:
