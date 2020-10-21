@@ -2,9 +2,10 @@
 #ifndef TRINITY_TRINITY_H
 #define TRINITY_TRINITY_H
 
-#include "initializers/ones.h"
-#include "initializers/random.h"
-#include "initializers/zeros.h"
+#include "initializers/initializer.h"
+#include "initializers/ones_like.h"
+#include "initializers/random_like.h"
+#include "initializers/zeros_like.h"
 #include "math_operations/add.h"
 #include "math_operations/divide.h"
 #include "math_operations/dot.h"

@@ -8,9 +8,10 @@ add_library(trinity INTERFACE)
 target_sources(trinity
     INTERFACE
         ${CMAKE_CURRENT_SOURCE_DIR}/include/trinity.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/initializers/ones.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/initializers/random.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/initializers/zeros.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/initializers/initializer.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/initializers/ones_like.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/initializers/random_like.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/initializers/zeros_like.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/math_operations/add.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/math_operations/divide.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/math_operations/dot.h

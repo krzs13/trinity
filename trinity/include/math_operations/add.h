@@ -31,9 +31,8 @@ Matrix<DType, NDimensions> add(const Matrix<DType, NDimensions>& matrix_input,
     result[i] = matrix_input.data()[i] + scalar;
   }
 
-  Matrix<DType, NDimensions> output{matrix_input.n_dimensions(),
-                                    matrix_input.shape(), matrix_input.size(),
-                                    result};
+  Matrix<DType, NDimensions> output{NDimensions, matrix_input.shape(),
+                                    matrix_input.size(), result};
 
   return output;
 }

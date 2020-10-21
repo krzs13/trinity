@@ -1,6 +1,7 @@
 #include <array>
 #include <iostream>
 #include <tuple>
+#include <random>
 
 #include "trinity/include/trinity.h"
 
@@ -11,6 +12,8 @@ using std::index_sequence;
 using std::make_tuple;
 using std::tie;
 using std::tuple;
+using std::rand;
+using std::srand;
 
 template <typename DataType, size_t NDimensions>
 Matrix<DataType, NDimensions> move_test() {
@@ -44,12 +47,16 @@ int main(int, char**) {
   tensor_4.insert({6, 3, -1, 0, 1, 1, 0, 4, -2, 5, 0, 2});
 
   // tensor_5 = tensor_1 & tensor_2;
-  tensor_5 = tensor_1.T();
-  print_data(tensor_5.data(), tensor_5.size());
+  // tensor_5 = tensor_1.T();
+  // print_data(tensor_5.data(), tensor_5.size());
 
-  tensor_6 = dot(tensor_3, tensor_4);
-  print_data(tensor_6.data(), tensor_6.size());
+  // tensor_6 = dot(tensor_3, tensor_4);
+  // print_data(tensor_6.data(), tensor_6.size());
 
   // tensor_1 &= tensor_4;
   // print_data(tensor_1.data(), tensor_1.size());
+
+  Matrix<double, 2> tensor_double{2, 2};
+  tensor_double = random_like(tensor_double);
+  print_data(tensor_double.data(), tensor_double.size());
 }

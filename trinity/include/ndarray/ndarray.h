@@ -122,23 +122,26 @@ class NDArray {
     size_t indices_array[n_dimensions_];
     copy(indices.begin(), indices.end(), indices_array);
 
-    size_t index{index_math_(indices_array, size_, n_dimensions_)};
-    assert((index < size_) && "Index out of range.");
+    for (size_t i = 0; i < n_dimensions_; i++) {
+      assert((indices_array[i] < shape_[i]) && "Index out of range.");
+    }
+
+    size_t index{calculate_index_(indices_array, size_, n_dimensions_)};
 
     return data_[index];
   }
 
-  size_t calculate_index(initializer_list<size_t> indices) const {
-    assert((indices.size() == n_dimensions_) && "Wrong number of indices.");
+  // size_t calculate_index(initializer_list<size_t> indices) const {
+  //   assert((indices.size() == n_dimensions_) && "Wrong number of indices.");
 
-    size_t indices_array[n_dimensions_];
-    copy(indices.begin(), indices.end(), indices_array);
+  //   size_t indices_array[n_dimensions_];
+  //   copy(indices.begin(), indices.end(), indices_array);
 
-    size_t index{index_math_(indices_array, size_, n_dimensions_)};
-    assert((index < size_) && "Index out of range.");
+  //   size_t index{index_math_(indices_array, size_, n_dimensions_)};
+  //   assert((index < size_) && "Index out of range.");
 
-    return index;
-  }
+  //   return index;
+  // }
 
  protected:
   size_t n_dimensions_;
@@ -159,13 +162,13 @@ class NDArray {
     return result;
   }
 
-  size_t index_math_(size_t* indices, size_t size, size_t n) const {
+  size_t calculate_index_(size_t* indices, size_t size, size_t n) const {
     size_t index{n_dimensions_ - n};
     size_t current_size{size / shape_[index]};
 
     if (current_size > 1) {
       return indices[index] * current_size +
-             index_math_(indices, current_size, n - 1);
+             calculate_index_(indices, current_size, n - 1);
     }
 
     return indices[index];
