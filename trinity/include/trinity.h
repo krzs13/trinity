@@ -11,6 +11,7 @@
 #include "math_operations/multiply.h"
 #include "math_operations/subtract.h"
 #include "math_operations/sum.h"
+#include "math_operations/transpose.h"
 #include "ndarray/matrix.h"
 #include "ndarray/ndarray.h"
 

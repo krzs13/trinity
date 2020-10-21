@@ -108,6 +108,8 @@ class Matrix : public NDArray<DType, NDimensions> {
   void operator&=(const Matrix<DType, NDimensions>& matrix_other) {
     *this = dot(*this, matrix_other);
   }
+
+  Matrix T() { return transpose(*this); }
 };
 
 #endif  // TRINITY_MATRIX_H
