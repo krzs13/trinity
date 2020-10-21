@@ -50,6 +50,8 @@ int main(int, char**) {
 
   tensor_1 += tensor_2 * 2;
   print_data(tensor_1.data(), tensor_1.size());
+  size_t idx[2]{1, 1};
+  cout << tensor_1.find(idx) << '\n';
 
   // cout << tensor_1.compare_shape(tensor_2) << '\n';
 }

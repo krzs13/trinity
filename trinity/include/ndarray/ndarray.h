@@ -117,6 +117,25 @@ class NDArray {
     return true;
   }
 
+  DType find(initializer_list<size_t> indices) const {
+    assert(indices.size() == n_dimensions_);
+
+    size_t indices_array[n_dimensions_];
+    copy(indices.begin(), indices.end(), indices_array);
+
+    size_t index{index_math_(indices_array, size_, n_dimensions_)};
+    assert((index < size_) && "Index out of range.");
+
+    return data_[index];
+  }
+
+  DType find(size_t* indicies) const {
+    size_t index{index_math_(indicies, size_, n_dimensions_)};
+    assert((index < size_) && "Index out of range.");
+
+    return data_[index];
+  }
+
  protected:
   size_t n_dimensions_;
   size_t* shape_;
@@ -124,7 +143,7 @@ class NDArray {
   DType* data_;
 
  private:
-  size_t calculate_size_() {
+  size_t calculate_size_() const {
     size_t result{shape_[0]};
 
     if (n_dimensions_ > 1) {
@@ -136,7 +155,7 @@ class NDArray {
     return result;
   }
 
-  size_t index_math_(size_t* indices, size_t size, size_t n) {
+  size_t index_math_(size_t* indices, size_t size, size_t n) const {
     size_t index{n_dimensions_ - n};
     size_t current_size{size / shape_[index]};
 
