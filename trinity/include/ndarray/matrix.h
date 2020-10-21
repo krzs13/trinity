@@ -6,6 +6,7 @@
 
 using std::copy;
 using std::initializer_list;
+using std::ostream;
 
 namespace trinity {
 template <typename DType, size_t NDimensions>
@@ -111,6 +112,34 @@ class Matrix : public NDArray<DType, NDimensions> {
   }
 
   Matrix T() { return transpose(*this); }
+
+  void ones() { *this = ones_like(*this); }
+
+  void random(DType minimum, DType maximum) {
+    *this = random_like(*this, minimum, maximum);
+  }
+
+  void random() { *this = random_like(*this); }
+
+  void zeros() { *this = zeros_like(*this); }
+
+  friend ostream& operator<<(ostream& out,
+                             Matrix<DType, NDimensions> matrix_input) {
+    size_t counter{0};
+
+    for (size_t i = 0; i < matrix_input.size(); i++) {
+      counter++;
+
+      out << matrix_input.data()[i] << ' ';
+
+      if ((counter % matrix_input.shape()[matrix_input.n_dimensions() - 1]) ==
+          0) {
+        out << '\n';
+      }
+    }
+
+    return out;
+  }
 };
 }  // namespace trinity
 

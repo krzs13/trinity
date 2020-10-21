@@ -11,15 +11,15 @@ Matrix<DType, NDimensions> transpose(
   assert((NDimensions == 2) &&
          "Transposition implemented only for 2D matrices.");
 
-  size_t rows{matrix_input.shape()[matrix_input.size() - 2]};
-  size_t columns{matrix_input.shape()[matrix_input.size() - 1]};
+  size_t rows{matrix_input.shape()[matrix_input.n_dimensions() - 2]};
+  size_t columns{matrix_input.shape()[matrix_input.n_dimensions() - 1]};
 
   size_t* output_shape{new size_t[2]{columns, rows}};
   DType* result{new DType[matrix_input.size()]{}};
 
   for (size_t row = 0; row < rows; row++) {
     for (size_t col = 0; col < columns; col++) {
-      result[row * columns + col] = matrix_input.data()[col * rows + row];
+      result[col * rows + row] = matrix_input.data()[row * columns + col];
     }
   }
 
