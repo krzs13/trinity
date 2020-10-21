@@ -99,6 +99,15 @@ class Matrix : public NDArray<DType, NDimensions> {
   }
 
   void operator/=(DType scalar) { *this = divide(*this, scalar); }
+
+  friend Matrix operator&(const Matrix<DType, NDimensions>& matrix_1,
+                          const Matrix<DType, NDimensions>& matrix_2) {
+    return dot(matrix_1, matrix_2);
+  }
+
+  void operator&=(const Matrix<DType, NDimensions>& matrix_other) {
+    *this = dot(*this, matrix_other);
+  }
 };
 
 #endif  // TRINITY_MATRIX_H
