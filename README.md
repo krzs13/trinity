@@ -20,18 +20,22 @@ Implemented for ND matrices.
 ### Add
 * add(A, B)
 * A + B
+* A += B
 
 ### Subtract
 * subtract(A, B)
 * A - B
+* A -= B
 
 ### Multiply
 * multiply(A, B)
 * A * B
+* A *= B
 
 ### Divide
 * divide(A, B)
-* A - B
+* A / B
+* A /= B
 
 ## Dot product
 
@@ -39,6 +43,7 @@ Implemented only for 2D matrices.
 
 * dot(A, B)
 * A & B
+* A &= B
 
 ## Transposition
 
@@ -63,6 +68,6 @@ Sum of all elements from matrix.
 * A.ones()
 
 ### Random
-* A = random_like(B)
-* A.random() `0 to 1 range for double values, -2147483648 to 2147483647 for int values`
+* A = random_like(B) - 0 to 1 range for double values, -2147483648 to 2147483647 for int values
+* A.random() - 0 to 1 range for double values, -2147483648 to 2147483647 for int values
 * A.random(minumum, maximum)
