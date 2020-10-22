@@ -49,7 +49,7 @@ Implemented only for 2D matrices.
 ## Sum
 Sum of all elements from matrix.
 
-* sum(A, B)
+* sum(A)
 
 ## Initializers
 
