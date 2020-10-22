@@ -10,8 +10,26 @@ Simple header only template library for linear algebra.
 * Copying constructor: available
 * Move constructor: available
 
-## Insert data
-* Insert through initializer list: matrix.insert({data})
+### Assigments
+* Copying assigment: available
+* Move assigment: available
+
+### Comparision
+
+* A == B
+* A != B
+
+### Data input
+
+Inserting data is done through the initializer list.
+
+* A.insert({data})
+
+### Access to a specific item
+
+Indexing is done through the initializer list.
+
+* A.find({indices})
 
 ## Elementwise operations
 
@@ -37,7 +55,7 @@ Implemented for ND matrices.
 * A / B
 * A /= B
 
-## Dot product
+### Dot product
 
 Implemented only for 2D matrices.
 
@@ -45,13 +63,13 @@ Implemented only for 2D matrices.
 * A & B
 * A &= B
 
-## Transposition
+### Transposition
 
 Implemented only for 2D matrices.
 
 * A.T()
 
-## Sum
+### Sum
 Sum of all elements from matrix.
 
 * sum(A)

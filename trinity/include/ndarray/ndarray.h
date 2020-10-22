@@ -19,7 +19,7 @@ class NDArray {
 
   NDArray(initializer_list<size_t> shape)
       : n_dimensions_{NDimensions},
-        shape_{new size_t[NDimensions]{}},
+        shape_{new size_t[NDimensions]},
         size_{},
         data_{nullptr} {
     copy(shape.begin(), shape.end(), shape_);
@@ -28,7 +28,7 @@ class NDArray {
 
   NDArray(size_t n_dimensions, size_t* shape, size_t size, DType* data)
       : n_dimensions_{n_dimensions}, size_{size} {
-    shape_ = new size_t[n_dimensions_]{};
+    shape_ = new size_t[n_dimensions_];
     copy(shape, shape + n_dimensions_, shape_);
 
     data_ = data;
@@ -36,11 +36,11 @@ class NDArray {
 
   NDArray(const NDArray& ndarray_other) {
     n_dimensions_ = ndarray_other.n_dimensions_;
-    shape_ = new size_t[n_dimensions_]{};
+    shape_ = new size_t[n_dimensions_];
     copy(ndarray_other.shape_, ndarray_other.shape_ + n_dimensions_, shape_);
 
     size_ = ndarray_other.size_;
-    data_ = new DType[ndarray_other.size_]{};
+    data_ = new DType[ndarray_other.size_];
     copy(ndarray_other.data_, ndarray_other.data_ + size_, data_);
   }
 
@@ -59,12 +59,12 @@ class NDArray {
   NDArray& operator=(const NDArray& ndarray_other) {
     n_dimensions_ = ndarray_other.n_dimensions_;
     delete[] shape_;
-    shape_ = new size_t[n_dimensions_]{};
+    shape_ = new size_t[n_dimensions_];
     copy(ndarray_other.shape_, ndarray_other.shape_ + n_dimensions_, shape_);
 
     size_ = ndarray_other.size_;
     delete[] data_;
-    data_ = new DType[size_]{};
+    data_ = new DType[size_];
     copy(ndarray_other.data_, ndarray_other.data_ + size_, data_);
 
     return *this;
@@ -103,7 +103,7 @@ class NDArray {
   void insert(initializer_list<DType> data) {
     assert((data.size() <= size_) && "Data contains too many elements.");
 
-    data_ = new DType[size_]{};
+    data_ = new DType[size_];
     copy(data.begin(), data.end(), data_);
   }
 

@@ -38,6 +38,38 @@ class Matrix : public NDArray<DType, NDimensions> {
     return *this;
   }
 
+  friend bool operator==(const Matrix<DType, NDimensions>& matrix_1,
+                         const Matrix<DType, NDimensions>& matrix_2) {
+    if (matrix_1.n_dimensions() != matrix_2.n_dimensions()) {
+      return false;
+    }
+
+    if (!matrix_1.compare_shape(matrix_2)) {
+      return false;
+    }
+
+    if (matrix_1.size() != matrix_2.size()) {
+      return false;
+    }
+
+    for (size_t i = 0; i < matrix_1.size(); i++) {
+      if (matrix_1.data()[i] != matrix_2.data()[i]) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  friend bool operator!=(const Matrix<DType, NDimensions>& matrix_1,
+                         const Matrix<DType, NDimensions>& matrix_2) {
+    if (matrix_1 == matrix_2) {
+      return false;
+    }
+
+    return true;
+  }
+
   friend Matrix operator+(const Matrix<DType, NDimensions>& matrix_1,
                           const Matrix<DType, NDimensions>& matrix_2) {
     return add(matrix_1, matrix_2);
