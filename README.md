@@ -1,6 +1,14 @@
 # trinity
 
-Simple header only template library for linear algebra.
+Simple header only, template based library for linear algebra. Includes operations such as:
+* Elementwise addition
+* Elementwise subtraction
+* Elementwise multiplication
+* Elementwise division
+* Matrix multiplication (dot product)
+* Matrix transposition
+* Sum of all matrix elements
+* Matrix initializers with zeros, ones and random numbers
 
 ## Matrix
 
