@@ -63,11 +63,7 @@ class Matrix : public NDArray<DType, NDimensions> {
 
   friend bool operator!=(const Matrix<DType, NDimensions>& matrix_1,
                          const Matrix<DType, NDimensions>& matrix_2) {
-    if (matrix_1 == matrix_2) {
-      return false;
-    }
-
-    return true;
+    return !(matrix_1 == matrix_2);
   }
 
   friend Matrix operator+(const Matrix<DType, NDimensions>& matrix_1,
