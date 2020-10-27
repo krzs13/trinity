@@ -25,6 +25,7 @@ target_sources(trinity
         ${CMAKE_CURRENT_SOURCE_DIR}/include/math_operations/transpose.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/ndarray/matrix.h
         ${CMAKE_CURRENT_SOURCE_DIR}/include/ndarray/ndarray.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/utilities/calculate_index.h
 )
 target_include_directories(trinity INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 

@@ -15,5 +15,6 @@
 #include "math_operations/transpose.h"
 #include "ndarray/matrix.h"
 #include "ndarray/ndarray.h"
+#include "utilities/calculate_index.h"
 
 #endif  // TRINITY_TRINITY_H

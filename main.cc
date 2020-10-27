@@ -67,9 +67,14 @@ int main(int, char**) {
   cout << "/// TRANSPOSITION ///"
        << "\n\n";
 
-  Matrix<int, 2> matrix_a_a_a{2, 4};
+  Matrix<int, 3> matrix_a_a_a{2, 3, 4};
 
-  matrix_a_a_a.insert({10, 11, 12, 13, 20, 21, 22, 23});
+  matrix_a_a_a.insert({111, 112, 113, 114,
+                       121, 122, 123, 124, 
+                       131, 132, 133, 134, 
+                       211, 212, 213, 214, 
+                       221, 222, 223, 224,
+                       231, 232, 233, 234});
 
   cout << "Matrix A:" << '\n';
   cout << matrix_a_a_a << '\n';

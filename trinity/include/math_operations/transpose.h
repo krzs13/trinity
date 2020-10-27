@@ -3,28 +3,46 @@
 #define TRINITY_TRANSPOSE_H
 
 #include "../ndarray/matrix.h"
+#include "../utilities/calculate_index.h"
+
+using std::copy;
+using std::reverse_copy;
 
 namespace trinity {
 template <typename DType, size_t NDimensions>
 Matrix<DType, NDimensions> transpose(
     const Matrix<DType, NDimensions>& matrix_input) {
-  assert((NDimensions == 2) &&
-         "Transposition implemented only for 2D matrices.");
+  size_t size{matrix_input.size()};
+  size_t indices[NDimensions]{};
+  size_t output_indices[NDimensions]{};
+  size_t shape[NDimensions]{};
+  size_t* output_shape{new size_t[NDimensions]{}};
+  DType* result{new DType[size]{}};
 
-  size_t rows{matrix_input.shape()[matrix_input.n_dimensions() - 2]};
-  size_t columns{matrix_input.shape()[matrix_input.n_dimensions() - 1]};
+  copy(matrix_input.shape(), matrix_input.shape() + NDimensions, shape);
+  reverse_copy(matrix_input.shape(), matrix_input.shape() + NDimensions,
+               output_shape);
 
-  size_t* output_shape{new size_t[2]{columns, rows}};
-  DType* result{new DType[matrix_input.size()]{}};
+  for (size_t i = 0; i < size; i++) {
+    reverse_copy(indices, indices + NDimensions, output_indices);
+    result[calculate_index(output_indices, output_shape, size, NDimensions,
+                           NDimensions)] =
+        matrix_input.data()[calculate_index(indices, shape, size, NDimensions,
+                                            NDimensions)];
 
-  for (size_t row = 0; row < rows; row++) {
-    for (size_t col = 0; col < columns; col++) {
-      result[col * rows + row] = matrix_input.data()[row * columns + col];
+    indices[NDimensions - 1] =
+        (indices[NDimensions - 1] + 1) % shape[NDimensions - 1];
+
+    for (size_t j = NDimensions - 1; j > 0; j--) {
+      if (indices[j] == 0) {
+        indices[j - 1] = (indices[j - 1] + 1) % shape[j - 1];
+      } else {
+        break;
+      }
     }
   }
 
-  Matrix<DType, NDimensions> output{NDimensions, output_shape,
-                                    matrix_input.size(), result};
+  Matrix<DType, NDimensions> output{NDimensions, output_shape, size, result};
 
   return output;
 }
